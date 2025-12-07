@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$host = getenv('MYSQLHOST');
-$db   = getenv('MYSQLDATABASE');
-$user = getenv('MYSQLUSER');
-$pass = getenv('MYSQLPASSWORD');
-$port = getenv('MYSQLPORT');
+$host = "kwameattrams_lab5.railway.internal";
+$db   = "railway";
+$user = "root";
+$pass = "AfPERolffOJGnekSWiGWzPKwZkowDtbA";
+$port = "3306";
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
 
