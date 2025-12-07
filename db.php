@@ -1,14 +1,15 @@
 <?php
-$host = 'localhost';
-$db   = 'ashesi_lms';
-$user = 'root'; // Default XAMPP user
-$pass = '';     // Default XAMPP password (leave empty)
+session_start();
 
-$conn = new mysqli($host, $user, $pass, $db);
+$host = getenv('MYSQLHOST');
+$db   = getenv('MYSQLDATABASE');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$port = getenv('MYSQLPORT');
+
+$conn = new mysqli($host, $user, $pass, $db, $port);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-session_start();
 ?>
