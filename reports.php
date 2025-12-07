@@ -17,6 +17,7 @@ $role = $_SESSION['role'];
         <h2>ASHESI LMS</h2>
         <a href="<?php echo ($role=='faculty') ? 'faculty_dashboard.php' : 'student_dashboard.php'; ?>">Dashboard</a>
         <a href="course_materials.php">Course Materials</a>
+        <a href="assignments.php">Assignments & Grades</a> 
         <a href="#" class="active">Reports</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>

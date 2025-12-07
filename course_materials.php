@@ -52,6 +52,7 @@ if ($role == 'faculty' && isset($_POST['upload_material'])) {
         <h2>ASHESI LMS</h2>
         <a href="<?php echo ($role=='faculty') ? 'faculty_dashboard.php' : 'student_dashboard.php'; ?>">Dashboard</a>
         <a href="#" class="active">Course Materials</a>
+        <a href="assignments.php">Assignments & Grades</a> 
         <a href="reports.php">Reports</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>

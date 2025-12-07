@@ -115,8 +115,9 @@ if (isset($_GET['view_session_id'])) {
 
     <div class="sidebar">
         <h2>ASHESI LMS</h2>
-        <a href="faculty_dashboard.php" class="active">Dashboard</a>
+        <a href="faculty_dashboard.php">Dashboard</a> 
         <a href="course_materials.php">Course Materials</a>
+        <a href="assignments.php">Assignments & Grades</a> 
         <a href="reports.php">Reports</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>

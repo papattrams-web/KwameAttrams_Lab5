@@ -42,7 +42,6 @@ if (isset($_POST['submit_code'])) {
     <title>Student Dashboard | Ashesi LMS</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific Styles for Student Messages */
         .alert-success { background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #c3e6cb; }
         .alert-error { background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb; }
     </style>
@@ -51,8 +50,12 @@ if (isset($_POST['submit_code'])) {
 
     <div class="sidebar">
         <h2>ASHESI LMS</h2>
-        <a href="#" class="active">My Attendance</a>
-        <a href="#">Course Materials</a>
+        <a href="student_dashboard.php" class="active">My Attendance</a>
+        
+        <a href="course_materials.php">Course Materials</a>
+        <a href="assignments.php">Assignments</a>
+        <a href="reports.php">Reports</a>
+        
         <a href="logout.php" class="logout">Logout</a>
     </div>
 

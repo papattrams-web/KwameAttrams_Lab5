@@ -1,7 +1,7 @@
 CREATE DATABASE ashesi_lms;
 USE ashesi_lms;
 
--- 1. Users Table (Handles Students, Faculty, Interns)
+-- Users Table (Handles Students, Faculty, Interns)
 CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(100) NOT NULL,
@@ -10,14 +10,14 @@ CREATE TABLE users (
     role ENUM('student', 'faculty') NOT NULL -- 'faculty' covers Teachers/Interns
 );
 
--- 2. Courses Table
+-- Courses Table
 CREATE TABLE courses (
     course_id INT AUTO_INCREMENT PRIMARY KEY,
     course_name VARCHAR(100) NOT NULL,
     course_code VARCHAR(20) NOT NULL
 );
 
--- 3. Sessions Table (created by Faculty)
+-- Sessions Table (created by Faculty)
 CREATE TABLE sessions (
     session_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE sessions (
     FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
 
--- 4. Attendance Log (Students marking present)
+-- Attendance Log (Students marking present)
 CREATE TABLE attendance_log (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
     session_id INT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE attendance_log (
     UNIQUE KEY unique_checkin (session_id, student_id) 
 );
 
--- 5. Storing Course Materials
+--  Storing Course Materials
 CREATE TABLE materials (
     material_id INT AUTO_INCREMENT PRIMARY KEY,
     course_id INT NOT NULL,
@@ -51,6 +51,30 @@ CREATE TABLE materials (
     upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (course_id) REFERENCES courses(course_id),
     FOREIGN KEY (uploaded_by) REFERENCES users(user_id)
+);
+
+-- Table for Faculty to create assignments
+CREATE TABLE assignments (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    due_date DATETIME,
+    max_score INT DEFAULT 100,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+
+-- Table for Students to submit work and receive grades
+CREATE TABLE submissions (
+    submission_id INT AUTO_INCREMENT PRIMARY KEY,
+    assignment_id INT NOT NULL,
+    student_id INT NOT NULL,
+    file_path VARCHAR(255),
+    submission_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    score INT DEFAULT NULL,
+    feedback TEXT,
+    FOREIGN KEY (assignment_id) REFERENCES assignments(assignment_id),
+    FOREIGN KEY (student_id) REFERENCES users(user_id)
 );
 
 -- DUMMY DATA FOR TESTING
@@ -64,4 +88,4 @@ INSERT INTO users (full_name, email, password, role) VALUES
 ('Dr. Sampah', 'faculty@ashesi.edu.gh', '$2y$10$wS.x..2l..p..passwordhash..', 'faculty');
 -- Student User
 INSERT INTO users (full_name, email, password, role) VALUES 
-('Kofi Student', 'student@ashesi.edu.gh', '$2y$10$wS.x..2l..p..passwordhash..', 'student');
+('Kwame Attrams', 'kwame.attrams@ashesi.edu.gh', '$2y$10$wS.x..2l..p..passwordhash..', 'student');
