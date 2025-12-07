@@ -82,10 +82,3 @@ INSERT INTO courses (course_name, course_code) VALUES
 ('Web Technologies', 'CS341'), 
 ('Database Systems', 'CS313');
 
--- Default Users (Password is '1234')
--- Faculty User
-INSERT INTO users (full_name, email, password, role) VALUES 
-('Dr. Sampah', 'faculty@ashesi.edu.gh', '$2y$10$wS.x..2l..p..passwordhash..', 'faculty');
--- Student User
-INSERT INTO users (full_name, email, password, role) VALUES 
-('Kwame Attrams', 'kwame.attrams@ashesi.edu.gh', '$2y$10$wS.x..2l..p..passwordhash..', 'student');
